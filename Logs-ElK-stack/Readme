@@ -1,0 +1,5 @@
+This is elk stack deployed inside the cluster as pod in order to collect logs automatically.
+Elastic search, fluentd, and kibana is deployed as pod inside the cluster.
+
+Note: always remember to edit storage class name in the volume claim template to the storage class name you deployed inside the cluster.
+here we i used ebs storage class name i deployed in my AWS account.

@@ -3,9 +3,6 @@ kind: StorageClass
 metadata:
   name: efs-sc
 provisioner: efs.csi.aws.com
-parameters:
-  provisioningMode: efs-ap
-  fileSystemId: fs-07c79f55f79ee1bb4
 
 ---
 
@@ -20,7 +17,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: efs-sc
-#  persistentVolumeReclaimPolicy: Retain
+  persistentVolumeReclaimPolicy: Retain
   csi:
     driver: efs.csi.aws.com
     volumeHandle: fs-07c79f55f79ee1bb4
@@ -38,3 +35,9 @@ spec:
   resources:
     requests:
       storage: 20Gi
+
+
+
+# install all the necessary efs csi driver inside your cluster using this command
+
+# kubectl apply -k "github.com/kubernetes-sigs/aws-efs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.4"
